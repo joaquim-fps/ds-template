@@ -1,0 +1,49 @@
+# Normalize text files and enforce LF line endings
+* text=auto eol=lf
+
+# Python / project files
+*.py text eol=lf
+*.toml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.csv text eol=lf
+*.tsv text eol=lf
+*.sql text eol=lf
+*.sh text eol=lf
+
+# Windows scripts should keep CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Jupyter notebooks are text, but large/noisy
+*.ipynb text eol=lf
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg text eol=lf
+
+# Data / binary artifacts
+*.parquet binary
+*.feather binary
+*.pkl binary
+*.pickle binary
+*.joblib binary
+*.onnx binary
+*.h5 binary
+*.hdf5 binary
+*.sqlite binary
+*.db binary
+
+# Office / reports
+*.pdf binary
+*.docx binary
+*.pptx binary
+*.xlsx binary

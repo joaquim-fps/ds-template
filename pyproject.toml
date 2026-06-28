@@ -1,0 +1,111 @@
+[project]
+name = "ds-template"
+version = "0.1.0"
+description = "A reusable data science project template."
+authors = [{ name = "Seu nome", email = "seu@email.com" }]
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "ipykernel>=7.3.0",
+    "jupyterlab>=4.6.0",
+    "matplotlib>=3.11.0",
+    "numpy>=2.5.0",
+    "pandas>=3.0.3",
+    "pyarrow>=24.0.0",
+    "python-dotenv>=1.2.2",
+    "seaborn>=0.13.2",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ds_template"]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.6.0",
+    "pytest>=9.1.1",
+    "ruff>=0.15.20",
+    "ty>=0.0.55",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+extend-exclude = [
+    "data",
+    "models",
+    "reports",
+    ".venv",
+    ".env",
+    "__pycache__"
+]
+
+[tool.ruff.lint]
+select = [
+    "FAST",
+    "ANN",
+    "A",
+    "COM",
+    "ICN",
+    "LOG",
+    "G",
+    "PT",
+    "Q",
+    "RET",
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # import sorting
+    "B",    # flake8-bugbear
+    "UP",   # pyupgrade
+    "SIM",  # flake8-simplify
+    "C4",   # flake8-comprehensions
+    "C90",
+    "ARG",  # unused function arguments
+    "PTH",  # prefer pathlib
+    "RUF",  # Ruff-specific rules,
+    "NPY",
+    "PD",
+    "N",
+]
+ignore = [
+  "E501", # Line length handled by formatter where possible
+  "COM812"
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    "S101",    # Allow assert if S is added later
+    "ARG",     # Test fixtures can look unused
+    "PLR2004", # Allow magic values if PLR is added later
+]
+"notebooks/*.ipynb" = [
+    "ANN",
+    "E402", # Allow imports after exploratory cells
+    "T201", # Allow print statements in notebooks
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["ds_template"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+[tool.ty.environment]
+python-version = "3.14"
+root = ["./src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = [
+    "--import-mode=importlib",
+    "--strict-config",
+    "--strict-markers",
+    "-ra",
+]
