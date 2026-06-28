@@ -283,6 +283,13 @@ def rename_package_folder(old_package_name: str, new_package_name: str) -> None:
     old_path.rename(new_path)
 
 
+def reset_readme(project_title: str) -> None:
+    """Reset README.md to a minimal project README."""
+    readme_path = PROJECT_ROOT / "README.md"
+    title = project_title.strip()
+    readme_path.write_text(f"# {title}\n", encoding="utf-8")
+
+
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments."""
     parser = argparse.ArgumentParser(
@@ -381,7 +388,6 @@ def main() -> None:
     )
 
     files_to_update = [
-        PROJECT_ROOT / "README.md",
         PROJECT_ROOT / ".env.example",
         PROJECT_ROOT / ".env-example",
         PROJECT_ROOT / ".env",
@@ -395,6 +401,7 @@ def main() -> None:
         old_project_name=current_project_name,
         new_project_name=new_project_name,
     )
+    reset_readme(project_title)
     rename_package_folder(current_package_name, new_package_name)
 
     print("Project initialized/updated.")
