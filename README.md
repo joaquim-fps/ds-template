@@ -1,5 +1,7 @@
 # ds-template
 
+[![CI](https://github.com/joaquim-fps/ds-template/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/joaquim-fps/ds-template/actions/workflows/ci.yml)
+
 A reusable modern data science project template for VS Code.
 
 It includes:
