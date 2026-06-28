@@ -5,6 +5,7 @@ data/processed/*
 data/external/*
 models/*
 reports/figures/*
+logs/*
 
 # Python
 __pycache__/
@@ -27,6 +28,7 @@ __pycache__/
 !data/external/.gitkeep
 !models/.gitkeep
 !reports/figures/.gitkeep
+!logs/.gitkeep
 
 .DS_Store
 db.json
