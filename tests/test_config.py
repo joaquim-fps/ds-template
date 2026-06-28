@@ -3,6 +3,7 @@ from pathlib import Path
 from ds_template.config import (
     DATA_DIR,
     FIGURES_DIR,
+    LOGS_DIR,
     MODELS_DIR,
     PROJECT_ROOT,
     RAW_DATA_DIR,
@@ -28,6 +29,7 @@ def test_artifact_paths_are_inside_project() -> None:
     assert MODELS_DIR == PROJECT_ROOT / "models"
     assert REPORTS_DIR == PROJECT_ROOT / "reports"
     assert FIGURES_DIR == PROJECT_ROOT / "reports" / "figures"
+    assert LOGS_DIR == PROJECT_ROOT / "logs"
 
 
 def test_paths_are_path_objects() -> None:

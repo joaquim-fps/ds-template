@@ -28,6 +28,7 @@ It includes:
 │   ├── interim/
 │   ├── processed/
 │   └── external/
+├── logs/
 ├── models/
 ├── notebooks/
 ├── reports/
@@ -60,6 +61,7 @@ It includes:
 | `data/interim/` | Intermediate transformed data |
 | `data/processed/` | Final modeling-ready datasets |
 | `data/external/` | Third-party data |
+| `logs/` | Local log files from scripts, training runs, and pipelines |
 | `notebooks/` | Exploration, experiments, and reports |
 | `src/` | Reusable project code |
 | `tests/` | Automated tests |
