@@ -1,22 +1,25 @@
 # ds-template
 
-A reusable data science project template for VS Code.
+A reusable modern data science project template for VS Code.
 
 It includes:
 
+- A reusable data science folder structure
 - `uv` for dependency and environment management
 - `Ruff` for linting and formatting
 - `ty` for type checking
 - `pytest` for testing
 - `pre-commit` for Git hooks
 - `just` for command shortcuts
-- A reusable data science folder structure
 - An interactive project initializer script
 
 ## Project structure
 
 ```text
 .
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 ├── .vscode/
 │   ├── extensions.json
 │   └── settings.json
@@ -37,6 +40,7 @@ It includes:
 │       └── config.py
 ├── tests/
 │   └── test_config.py
+├── .editorconfig
 ├── .env.example
 ├── .gitattributes
 ├── .gitignore
@@ -66,7 +70,7 @@ It includes:
 
 ## Starting a new project
 
-Copy this template folder, then run:
+This repository is meant to be used as a GitHub template. **After creating a new repository from this template, clone it locally and then run:**
 
 ```bash
 just init-project
@@ -124,24 +128,36 @@ Run pre-commit checks:
 just precommit
 ```
 
+Format, check, stage all files, and commit:
+
+```bash
+just commit-all "Your message"
+```
+
+Run the same checks as GitHub Actions CI:
+
+```bash
+just ci
+```
+
 Clean local caches:
 
 ```bash
 just clean
 ```
 
-## Development workflow
 
-A typical workflow is:
+## Checks and automation
 
-```bash
-just format
-just check
-git status
-git add .
-just precommit
-git commit -m "Your message"
-```
+This template uses three levels of checks:
+
+| Tooling layer | Command | Purpose |
+|---|---|---|
+| Local checks | `just check` | Run Ruff, formatting check, ty, and pytest locally |
+| Pre-commit | `just precommit` or automatic on `git commit` | Run fast Ruff hooks before commits |
+| GitHub Actions CI | automatic on push or pull request | Run the full check suite in a clean environment |
+
+Pre-commit is intentionally lightweight. It runs Ruff linting/fixing and formatting. The full suite runs in `just check` and in **GitHub Actions CI**.
 
 ## Data policy
 
@@ -191,3 +207,4 @@ Add development-only dependencies:
 ```bash
 uv add --dev package-name
 ```
+Packages already in dependencies include:  `jupyter`, `pandas`, `numpy`, `matplotlib`, `pyarrow` and `python-dotenv`.
