@@ -45,35 +45,45 @@ extend-exclude = [
 
 [tool.ruff.lint]
 select = [
-    "FAST",
-    "ANN",
-    "A",
-    "COM",
-    "ICN",
-    "LOG",
-    "G",
-    "PT",
-    "Q",
-    "RET",
-    "E",    # pycodestyle errors
-    "W",    # pycodestyle warnings
-    "F",    # pyflakes
-    "I",    # import sorting
-    "B",    # flake8-bugbear
-    "UP",   # pyupgrade
-    "SIM",  # flake8-simplify
-    "C4",   # flake8-comprehensions
-    "C90",
-    "ARG",  # unused function arguments
-    "PTH",  # prefer pathlib
-    "RUF",  # Ruff-specific rules,
-    "NPY",
-    "PD",
+    "F", "UP", "B", "SIM", "S", "T20", # Previous rules
+    "ANN", # flake8-annotations
+    "C4",  # flake8-comprehensions
+    "BLE", # flake8-blind-except
+    "PIE", # flake8-pie
+    "I",
     "N",
+    "G",
+    "RET",
+    "NPY",
+    "W",
+    "E",
+    "ISC",
+    "ICN",
+    "TID",
+    "PTH",
+    "COM",
+    "FBT",
+    "LOG",
+    "RUF",
+    "Q",
+    "ARG",
+    "PD"
 ]
 ignore = [
   "E501", # Line length handled by formatter where possible
-  "COM812"
+  "W191",
+  "E111",
+  "E114",
+  "E117",
+  "D206",
+  "D300",
+  "Q000",
+  "Q001",
+  "Q002",
+  "Q003",
+  "COM812",
+  "COM819",
+  "TD", "FIX", "ERA",
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -86,6 +96,7 @@ ignore = [
     "ANN",
     "E402", # Allow imports after exploratory cells
     "T201", # Allow print statements in notebooks
+    "ARG",
 ]
 
 [tool.ruff.lint.isort]
