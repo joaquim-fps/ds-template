@@ -40,7 +40,8 @@ extend-exclude = [
     "reports",
     ".venv",
     ".env",
-    "__pycache__"
+    "__pycache__",
+    "scripts"
 ]
 
 [tool.ruff.lint]
